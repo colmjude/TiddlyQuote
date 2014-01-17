@@ -5,8 +5,8 @@
 // });
 
 function TiddlyChrome() {
-   TiddlyChrome.baseURL = 'http://boycook.tiddlyspace.com';
-   TiddlyChrome.spaceName = localStorage["space"];
+    TiddlyChrome.spaceName = localStorage["space"];
+    TiddlyChrome.baseURL = 'http://' + TiddlyChrome.spaceName + '.tiddlyspace.com';
 }
 
 TiddlyChrome.saveTiddler = function() {
