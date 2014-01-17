@@ -1,16 +1,12 @@
 {
-  "manifest_version": 2,
   "name": "Tiddly Chrome",
   "description": "Create Tiddlers from Chrome",
-  "version": "1.0",
+  "version": "1.0.1",
   "options_page": "options.html",
-  "permissions": [
-    "http://tiddlyspace.com/",
-    "http://*.tiddlyspace.com/",
-    "http://*.tiddlyspace.com/*"
-  ],
+  "permissions": ["activeTab"],
   "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "popup.html"
-  }
+      "default_icon": "icon.png"  ,
+      "default_popup": "popup.html"
+  },
+  "manifest_version": 2
 }
