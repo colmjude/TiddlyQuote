@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>TiddlySpace</title>
+    <style>
+      body {
+          min-width: 357px;
+          overflow-x: hidden;
+      }
+      section.main {
+         width: 200px;
+      }
+
+      .tiddler-edit-mode textarea {
+        height: 150px;
+      }      
+
+      .tiddler-edit-mode textarea, .tiddler-edit-mode input[type="text"] {
+        width: 90%;
+      } 
+    </style>
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: http://developer.chrome.com/extensions/contentSecurityPolicy.html
+     -->
+</head>
+
+<body>
+   <section class="tiddler tiddler-edit-mode">
+      <section><input id="title" type="text" value="New Tiddler" class="tiddler-title"></section>
+      <section class="tiddler-edit-config">
+          <input type="radio" id="privacy" name="privacy" value="private"><i class="icon-lock" title="Private"></i>
+          <input type="radio" id="privacy" name="privacy" value="public" checked="checked"><i class="icon-unlock" title="Public"></i>
+          <select id="type" class="tiddler-type">
+              <option value="text/x-markdown">Markdown</option>
+              <option value="text/plain">Plain Text</option>
+              <option value="text/html">HTML</option>
+              <option value="text/css">CSS</option>
+              <option value="text/javascript">JavaScript</option>
+              <option value="text/x-tiddlywiki">TiddlyWiki Text</option>
+          </select>
+      </section>
+      <section><textarea id="text" class="tiddler-text">Type the text for 'New Tiddler'</textarea></section>
+      <section><input id="tags" type="text" class="tiddler-tags"></section>
+      <section><button id="save">Save</button></section>
+   </section>
+   <!-- // <script type="text/javascript" src="http://spaceui.tiddlyspace.com/bags/spaceui_public/tiddlers/space.js"></script> -->
+   <script Type="text/javascript" src="popup.js"></script>
+</body>
+</html>
