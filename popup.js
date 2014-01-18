@@ -19,12 +19,13 @@ TiddlyChrome.readTiddler = function() {
     var typeElem = document.getElementById('type');
     var type = typeElem.options[typeElem.options.selectedIndex].value;
 
-    var tiddler = {};
+    var tiddler = {},
+        privacy = document.querySelector('input[name="privacy"]:checked').value;
     tiddler.title = document.getElementById('title').value;
     tiddler.text = document.getElementById('text').value;
     tiddler.tags = document.getElementById('tags').value;
     tiddler.type = type;
-    tiddler.bag = TiddlyChrome.spaceName + '_' + 'public';
+    tiddler.bag = TiddlyChrome.spaceName + '_' + privacy;
     return tiddler;
 };
 

@@ -32,8 +32,8 @@
    <section class="tiddler tiddler-edit-mode">
       <section><input id="title" type="text" value="New Tiddler" class="tiddler-title"></section>
       <section class="tiddler-edit-config">
-          <input type="radio" id="privacy" name="privacy" value="private"><i class="icon-lock" title="Private"></i>
-          <input type="radio" id="privacy" name="privacy" value="public" checked="checked"><i class="icon-unlock" title="Public"></i>
+          <label for="private">private</label><input type="radio" id="private" name="privacy" value="private"><i class="icon-lock" title="Private"></i>
+          <label for="public">public</label><input type="radio" id="public" name="privacy" value="public" checked="checked"><i class="icon-unlock" title="Public"></i>
           <select id="type" class="tiddler-type">
               <option value="text/x-markdown">Markdown</option>
               <option value="text/plain">Plain Text</option>
