@@ -23,7 +23,7 @@ TiddlyChrome.readTiddler = function() {
         privacy = document.querySelector('input[name="privacy"]:checked').value;
     tiddler.title = document.getElementById('title').value;
     tiddler.text = document.getElementById('text').value;
-    tiddler.tags = document.getElementById('tags').value;
+    tiddler.tags = TiddlyChrome.stringToTags( document.getElementById('tags').value );
     tiddler.type = type;
     tiddler.bag = TiddlyChrome.spaceName + '_' + privacy;
     return tiddler;
@@ -45,6 +45,22 @@ TiddlyChrome.doAjax = function(url, method, data, callBack) {
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.onreadystatechange = callBack;
     xhr.send(JSON.stringify(data));
+};
+
+TiddlyChrome.stringToTags = function(tagString) {
+    var brackets = /^\s*\[\[([^\]\]]+)\]\](\s*.*)/,
+        whitespace = /^\s*([^\s]+)(\s*.*)/,
+        match,
+        rest = tagString,
+        tags = [];
+
+    match = brackets.exec(rest) || whitespace.exec(rest);
+    while (match) {
+        tags.push(match[1]);
+        rest = match[2];
+        match = brackets.exec(rest) || whitespace.exec(rest);
+    }
+    return tags;
 };
 
 var app = new TiddlyChrome();
