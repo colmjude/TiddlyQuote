@@ -6,6 +6,14 @@
 function TiddlyChrome() {
     TiddlyChrome.spaceName = localStorage["space"];
     TiddlyChrome.baseURL = 'http://' + TiddlyChrome.spaceName + '.tiddlyspace.com';
+    // add listener for msgs from page
+    chrome.runtime.onMessage.addListener(
+        function(request, sender, sendResponse) {
+          sendResponse({success: TiddlyChrome.populateFields(request)});
+        }
+    );
+    // inject and execute script onto page
+    chrome.tabs.executeScript({ file: 'inject.js' });
 }
 
 TiddlyChrome.saveTiddler = function() {
@@ -61,6 +69,11 @@ TiddlyChrome.stringToTags = function(tagString) {
         match = brackets.exec(rest) || whitespace.exec(rest);
     }
     return tags;
+};
+
+TiddlyChrome.populateFields = function(data) {
+    document.getElementById('text').value = data.selection;
+    return "true";
 };
 
 var app = new TiddlyChrome();
