@@ -33,6 +33,8 @@ TiddlyChrome.readTiddler = function() {
     tiddler.text = document.getElementById('text').value;
     tiddler.tags = TiddlyChrome.stringToTags( document.getElementById('tags').value );
     tiddler.type = type;
+    tiddler.fields = {};
+    tiddler.fields['url'] = document.getElementById('url').value;
     tiddler.bag = TiddlyChrome.spaceName + '_' + privacy;
     return tiddler;
 };
@@ -73,6 +75,7 @@ TiddlyChrome.stringToTags = function(tagString) {
 
 TiddlyChrome.populateFields = function(data) {
     document.getElementById('text').value = data.selection;
+    document.getElementById('url').value = data.url;
     return "true";
 };
 

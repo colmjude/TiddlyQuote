@@ -1,4 +1,5 @@
 var data = {
+    url: document.URL,
     selection: window.getSelection().toString()
 }
 
