@@ -14,6 +14,17 @@ function TiddlyChrome() {
     );
     // inject and execute script onto page
     chrome.tabs.executeScript({ file: 'inject.js' });
+    TiddlyChrome.displayDefaults();
+}
+
+TiddlyChrome.displayDefaults = function() {
+    privacy = document.getElementsByName("privacy");
+    for(var i=0; i < privacy.length; i++) {
+        if(localStorage["privacy"] && privacy[i].value == localStorage["privacy"]) {
+            privacy[i].checked = true;
+            break;
+        }
+    }
 }
 
 TiddlyChrome.saveTiddler = function() {
