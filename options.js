@@ -4,13 +4,18 @@ function save_options() {
    localStorage["space"] = space;
    var privacy = document.querySelector('input[name="privacy"]:checked').value;
    localStorage["privacy"] = privacy;
+   var tags = document.getElementById("tags").value;
+   localStorage["tags"] = tags;
 }
 
 // Restores select box state to saved value from localStorage.
 function restore_options() {
    restore_space();
    restore_privacy();
+   restore_tags();
 }
+// refactor:
+// would passing storage variable and UI update method work?
 function restore_space() {
     var space = localStorage["space"];
     if (!space) {
@@ -24,6 +29,13 @@ function restore_privacy() {
         return;
     }
     document.getElementById(privacy).checked = true;
+}
+function restore_tags() {
+    var tags = localStorage["tags"];
+    if(!tags) {
+        return;
+    }
+    document.getElementById("tags").value = tags;
 }
 document.addEventListener('DOMContentLoaded', restore_options);
 document.querySelector('#save').addEventListener('click', save_options);

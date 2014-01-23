@@ -25,6 +25,9 @@ TiddlyChrome.displayDefaults = function() {
             break;
         }
     }
+    if(localStorage["tags"]) {
+        document.getElementById("tags").value = localStorage["tags"];
+    }
 }
 
 TiddlyChrome.saveTiddler = function() {
