@@ -55,8 +55,10 @@ TiddlyChrome.readTiddler = function() {
 
 TiddlyChrome.putTiddler = function(tiddler) {
     var callBack = function() {
-        if (xhr.readyState == 4) {
-            console.log(xhr.responseText);
+        // 4 = done
+        if (this.readyState == 4) {
+            // to do: make user aware tiddler has been saved successfully
+            window.close();
         }
     };
     TiddlyChrome.doAjax(TiddlyChrome.baseURL + '/bags/' + tiddler.bag + '/tiddlers/' + tiddler.title,
