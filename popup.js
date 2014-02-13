@@ -43,7 +43,8 @@ TiddlyChrome.readTiddler = function() {
 
     var tiddler = {},
         privacy = document.querySelector('input[name="privacy"]:checked').value;
-    tiddler.title = document.getElementById('title').value;
+    // in milliseconds so should be unique enough
+    tiddler.title = Date.now();
     tiddler.text = document.getElementById('text').value;
     tiddler.tags = TiddlyChrome.stringToTags( document.getElementById('tags').value );
     tiddler.type = type;
