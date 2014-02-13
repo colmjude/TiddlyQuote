@@ -90,8 +90,8 @@ TiddlyChrome.stringToTags = function(tagString) {
 };
 
 TiddlyChrome.populateFields = function(data) {
-    document.getElementById('text').value = data.selection;
-    document.getElementById('url').value = data.url;
+    document.getElementById('quote').getElementsByClassName("text")[0].innerHTML = data.selection;
+    document.getElementById('quote').getElementsByClassName("url")[0].innerHTML = data.url;
     return "true";
 };
 

@@ -3,12 +3,11 @@
 
 <head>
     <title>TiddlySpace</title>
-    <link rel="stylesheet" href="popup.css" />
+    <link rel="stylesheet" type="text/css" href="popup.css" />
 </head>
-
 <body>
-   <section class="tiddler tiddler-edit-mode">
-      <section><input id="title" type="text" value="New Tiddler" class="tiddler-title"></section>
+   <main class="tiddler tiddler-edit-mode">
+      <div><input id="title" type="text" value="New Tiddler" class="tiddler-title"></div>
       <section class="tiddler-edit-config">
           <label for="private">private</label><input type="radio" id="private" name="privacy" value="private"><i class="icon-lock" title="Private"></i>
           <label for="public">public</label><input type="radio" id="public" name="privacy" value="public" checked="checked"><i class="icon-unlock" title="Public"></i>
@@ -21,11 +20,13 @@
               <option value="text/x-tiddlywiki">TiddlyWiki Text</option>
           </select>
       </section>
-      <section><textarea id="text" class="tiddler-text">Type the text for 'New Tiddler'</textarea></section>
+      <section id="quote">
+          <p class="text"></p>
+          <span class="url"></span>
+      </section>
       <section><label for="tags">Tags:</label><input id="tags" type="text" name="tags" class="tiddler-tags"></section>
-      <section><label for="url">URL:</label><input id="url" type="text" name="url" class="quote-url" /></section>
       <section><button id="save">Save</button></section>
-   </section>
+   </main>
    <script Type="text/javascript" src="popup.js"></script>
 </body>
 </html>
