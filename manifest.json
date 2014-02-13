@@ -1,7 +1,7 @@
 {
     "name": "Tiddly Quote",
     "description": "Create Tiddlers from Chrome",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "options_page": "options.html",
     "permissions": [
         "activeTab",
