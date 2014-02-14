@@ -50,6 +50,7 @@ TiddlyChrome.readTiddler = function() {
     tiddler.type = type;
     tiddler.fields = {};
     tiddler.fields['url'] = document.getElementById('quote').getElementsByClassName("url")[0].innerHTML;
+    tiddler.fields['article_title'] = document.getElementById('quote').getElementsByClassName("art_title")[0].innerHTML;
     tiddler.bag = TiddlyChrome.spaceName + '_' + privacy;
     return tiddler;
 };
@@ -91,6 +92,7 @@ TiddlyChrome.stringToTags = function(tagString) {
 };
 
 TiddlyChrome.populateFields = function(data) {
+    document.getElementById('quote').getElementsByClassName("art_title")[0].innerHTML = data.title;
     document.getElementById('quote').getElementsByClassName("text")[0].innerHTML = data.selection;
     document.getElementById('quote').getElementsByClassName("url")[0].innerHTML = data.url;
     return "true";
