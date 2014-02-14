@@ -45,11 +45,11 @@ TiddlyChrome.readTiddler = function() {
         privacy = document.querySelector('input[name="privacy"]:checked').value;
     // in milliseconds so should be unique enough
     tiddler.title = Date.now();
-    tiddler.text = document.getElementById('text').value;
+    tiddler.text = document.getElementById('quote').getElementsByClassName("text")[0].innerHTML;
     tiddler.tags = TiddlyChrome.stringToTags( document.getElementById('tags').value );
     tiddler.type = type;
     tiddler.fields = {};
-    tiddler.fields['url'] = document.getElementById('url').value;
+    tiddler.fields['url'] = document.getElementById('quote').getElementsByClassName("url")[0].innerHTML;
     tiddler.bag = TiddlyChrome.spaceName + '_' + privacy;
     return tiddler;
 };
