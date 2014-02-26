@@ -1,12 +1,12 @@
 // Saves options to localStorage.
 function save_options() {
-   var space = document.getElementById("space").value;
+   var space = document.querySelector("#space").value;
    localStorage["space"] = space;
    var privacy = document.querySelector('input[name="privacy"]:checked').value;
    localStorage["privacy"] = privacy;
-   var tags = document.getElementById("tags").value;
+   var tags = document.querySelector("#tags").value;
    localStorage["tags"] = tags;
-   var type = document.getElementById("type").value;
+   var type = document.querySelector("#type").value;
    localStorage["type"] = type;
 }
 
@@ -24,28 +24,30 @@ function restore_space() {
     if (!space) {
         return;
     }
-    document.getElementById("space").value = space;
+    document.querySelector("#space").value = space;
 }
 function restore_privacy() {
     var privacy = localStorage["privacy"];
     if(!privacy) {
+        // default to private if user hasn't chosen
+        document.querySelector("#private").checked = true;
         return;
     }
-    document.getElementById(privacy).checked = true;
+    document.querySelector("#" + privacy).checked = true;
 }
 function restore_tags() {
     var tags = localStorage["tags"];
     if(!tags) {
         return;
     }
-    document.getElementById("tags").value = tags;
+    document.querySelector("#tags").value = tags;
 }
 function restore_type() {
     var type = localStorage["type"];
     if(!type) {
         return;
     }
-    document.getElementById("type").value = type;
+    document.querySelector("#type").value = type;
 }
 document.addEventListener('DOMContentLoaded', restore_options);
 document.querySelector('#save').addEventListener('click', save_options);
