@@ -1,53 +1,46 @@
-// Saves options to localStorage.
-function save_options() {
-   var space = document.querySelector("#space").value;
-   localStorage["space"] = space;
-   var privacy = document.querySelector('input[name="privacy"]:checked').value;
-   localStorage["privacy"] = privacy;
-   var tags = document.querySelector("#tags").value;
-   localStorage["tags"] = tags;
-   var type = document.querySelector("#type").value;
-   localStorage["type"] = type;
+function Option(name, selector, type) {
+    this.name = name;
+    this.selector = selector;
+    this.type = type;
 }
 
-// Restores select box state to saved value from localStorage.
-function restore_options() {
-   restore_space();
-   restore_privacy();
-   restore_tags();
-   restore_type();
-}
-// refactor:
-// would passing storage variable and UI update method work?
-function restore_space() {
-    var space = localStorage["space"];
-    if (!space) {
+// should handle no choice better (defaults...)
+Option.prototype.save = function() {
+    localStorage[this.name] = document.querySelector(this.selector).value;
+};
+
+Option.prototype.restore = function() {
+    this.value = localStorage[this.name];
+    if (!this.value) {
         return;
     }
-    document.querySelector("#space").value = space;
-}
-function restore_privacy() {
-    var privacy = localStorage["privacy"];
-    if(!privacy) {
-        // default to private if user hasn't chosen
-        document.querySelector("#private").checked = true;
-        return;
+    if(this.type === "radio") {
+        document.querySelector("#" + this.value).checked = true;
+    } else {
+        document.querySelector(this.selector).value = this.value;
     }
-    document.querySelector("#" + privacy).checked = true;
-}
-function restore_tags() {
-    var tags = localStorage["tags"];
-    if(!tags) {
-        return;
+};
+
+(function() {
+    var options = [
+        new Option("type", "#type", "select"),
+        new Option("tags", "#tags", "input"),
+        new Option("space", "#space", "input"),
+        new Option("privacy", 'input[name="privacy"]:checked', "radio")
+    ];
+
+    function restore_options() {
+       options.forEach(function(el, ind, arr){
+           el.restore();
+       });
     }
-    document.querySelector("#tags").value = tags;
-}
-function restore_type() {
-    var type = localStorage["type"];
-    if(!type) {
-        return;
+
+    function save_options() {
+       options.forEach(function(el, ind, arr){
+           el.save();
+       });
     }
-    document.querySelector("#type").value = type;
-}
-document.addEventListener('DOMContentLoaded', restore_options);
-document.querySelector('#save').addEventListener('click', save_options);
+    
+    document.addEventListener('DOMContentLoaded', restore_options);
+    document.querySelector('#save').addEventListener('click', save_options);
+}());
