@@ -1,0 +1,123 @@
+@import 'globals';
+
+$light_text: #666;
+$dark_text: #222;
+$on_dark: #fff;
+
+body {
+    min-width: 600px;
+    overflow-x: hidden;
+    background: #d9d9d9;
+    color: $light_text;
+}
+
+p {
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, hgroup, header,
+footer, table, div, section, ol, ul, p {
+    //margin-bottom: 1.5rem;
+}
+
+section.main {
+    width: 200px;
+}
+
+.tiddler-edit-mode textarea {
+    height: 150px;
+}      
+
+section {
+    background: rgba(255,255,255,0.75);
+    padding: 0.5em;
+}
+
+#quote {
+    padding: 1.5em 1.75em;
+    border-bottom: 2px solid $light_text;
+    background: $on_dark;
+}
+
+#quote p {
+    font-size: 21px;
+    color: $dark_text;
+    position: relative;
+    text-align: center;
+    padding: 1em;
+
+    &:before,
+    &:after {
+        font-size: 2em;
+        opacity: 0.5;
+        position: absolute;
+    }
+
+    &:before {
+        content: '"';
+        top:  0;
+        left: 0;
+    }
+    &:after {
+        content: '"';
+        bottom: -0.5em;
+        right: 0;
+    }
+}
+
+#quote .url {
+    font-size: 16px;
+    font-style: italic;
+    color: $dark_text;
+}
+
+#quote span {
+    display: block;
+    text-align: right;
+    padding-right: 0.25em;
+}
+
+.controls, .tags {
+    font-family: "Helvetica Neue";
+    letter-spacing: 0.5px;
+}
+
+.tags {
+    padding: 2em 2em 1em;
+
+    label {
+        color: $dark_text;
+    }
+
+    input {
+        color: $light_text;
+    }
+}
+
+.tiddler-tags {
+    width: 100%;
+    border: 0;
+    outline: none;
+    background: transparent;
+    line-height: 2em;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+button {
+    outline: none;
+    border: 1px solid #666;
+    border-radius: 2px;
+    background: $light_text;
+    color: $on_dark;
+    font-size: 16px;
+    padding: 0.35em 0.5em;
+}
+
+.tiddler-edit-config {
+    display: none;
+}
+
+.controls {
+    text-align: right;
+    padding: 0 2em 1.5em;
+}
