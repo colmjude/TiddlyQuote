@@ -6,6 +6,8 @@ function save_options() {
    localStorage["privacy"] = privacy;
    var tags = document.getElementById("tags").value;
    localStorage["tags"] = tags;
+   var type = document.getElementById("type").value;
+   localStorage["type"] = type;
 }
 
 // Restores select box state to saved value from localStorage.
@@ -13,6 +15,7 @@ function restore_options() {
    restore_space();
    restore_privacy();
    restore_tags();
+   restore_type();
 }
 // refactor:
 // would passing storage variable and UI update method work?
@@ -36,6 +39,13 @@ function restore_tags() {
         return;
     }
     document.getElementById("tags").value = tags;
+}
+function restore_type() {
+    var type = localStorage["type"];
+    if(!type) {
+        return;
+    }
+    document.getElementById("type").value = type;
 }
 document.addEventListener('DOMContentLoaded', restore_options);
 document.querySelector('#save').addEventListener('click', save_options);

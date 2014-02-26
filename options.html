@@ -16,6 +16,15 @@
       <section>
           <label for="tags">Default Tags (separated by spaces):</label><input id="tags" type="text" name="tags" class="tiddler-tags" />
       </section>
+      <section>
+        <label for="type">Select type:</label>
+        <select id="type" name="type" class="tiddler-type">
+            <option value="text/x-markdown">Markdown</option>
+            <option value="text/plain">Plain Text</option>
+            <option value="text/html">HTML</option>
+            <option value="text/x-tiddlywiki">TiddlyWiki Text</option>
+        </select>
+      </section>
       <section><button id="save">Save</button></section>
    </section>
    <script Type="text/javascript" src="options.js"></script>
